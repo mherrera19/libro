@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head th:replace="plantilla::head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container" th:replace="plantilla::menu"></div>
+            <div class="container" style="max-width: 400px; margin-top: 50px">
+            <div class="card">
+                <div class="card-header">
+                    Registrar Post
+                </div>
+                <div class="card-body">
+                    <form action="/libadd">
+                        <div class="mb-3">
+                            <select name="idautor" id="aut" class="form-control">
+                                <option value="0">Seleccionar Autor</option>                                
+                                <option th:each="aut : ${auts}" th:value="${aut.id}" th:text="${aut.nomautor}" th:selected="false"/>                              
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <select name="ideditorial" id="edi" class="form-control">
+                                <option value="0">Seleccionar Editorial</option>                                
+                                <option th:each="edi : ${edis}" th:value="${edi.id}" th:text="${edi.nomeditorial}" th:selected="false"/>                              
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control m-25" placeholder="libro" name="nom_libro">
+                        </div>
+                        <input type="submit" class="btn btn-primary" value="Guardar">
+                    </form>
+                </div>
+            </div>
+    </body>
+</html>
+

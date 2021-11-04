@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+    <head th:replace="plantilla::head">
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <div class="container" th:replace="plantilla::menu"></div>
+        <div class="container" style="margin-top: 40px; margin: 0 auto; max-width: 500px">
+            <a href="/create" class="text-info" style="text-decoration: none; font-weight: bold">addLib</a>
+            <table class="table" style="max-width: 600px" >
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Nom Autor</th>
+                        <th scope="col">Ape Autor</th>
+                        <th scope="col">Editorial</th>
+                        <th scope="col" colspan="2">Acción</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="lib :${libs}">
+                        <th scope="row" th:text="${lib.id}"></th>
+                        <td th:text="${lib.nom_libro}"></td>
+                        <td th:text="${lib.autor.nomautor}"></td>
+                        <td th:text="${lib.autor.apeautor}"></td>
+                        <td th:text="${lib.editorial.nomeditorial}"></td>
+                        <td>
+                            <a href="#" class="text-success" th:href="@{'/editlib/' + ${lib.id}}"><i class="far fa-edit"></i></a>
+                            <a href="#" class="text-danger" th:href="@{'/dellib/' + ${lib.id}}"><i class="fas fa-trash-alt"></i></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </body>
+</html>
